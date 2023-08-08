@@ -3,7 +3,7 @@
 	"package": "me.lutuk.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-
+		"GuiOpenListener"
 	],
 	"injectors": {
 		"defaultRequire": 1

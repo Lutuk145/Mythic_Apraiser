@@ -1,0 +1,175 @@
+{
+  "Spears": {
+    "Apocalypse": {
+      "healthRegenPercent": [162,87,30],
+      "lifeSteal": [200,866,60],
+      "exploding": [45,195,10],
+      "waterDamage": [65,35,0],
+      "fireDefense": [6,26,0],
+      "waterDefense": [65,35,0],
+      "soulPointregen": [26,14,0]
+    },
+    "Hero": {
+      "hpr": [12.0,52.0,20.0],
+      "mainAttack": [12.0,52.0,0.0],
+      "walkSpeed": [12.0,52.0,80.0]
+    },
+    "Guardian": {
+      "health": [1800,7800,65],
+      "rawHpr": [176,761,35],
+      "manaRegen": [1,1,0],
+      "thorns": [8,33,0],
+      "fireDefense": [6,26,0],
+      "waterDefense": [6,26,0],
+      "earthDefense": [6,26,0]
+    },
+    "Alkatraz": {
+      "exploding": [12,52,2.5],
+      "meleePercent": [12,52,47.5],
+      "earthDamage": [12,52,50]
+    },
+    "Idol": {
+      "manaRegen": [3,13,32.5,27.5],
+      "reflection": [9,39,5,5],
+      "rawSpell": [79,343,52.5,7.5],
+      "waterDefense": [5,15,0,0],
+      "secondSpellRaw": [15,65,10,60],
+      "soulpointRegen": [8,33,0,0]
+    },
+    "Thrundacrack": {
+      "healthRegenPercent": [78,42,2.5],
+      "walkSpeed": [3,12,2.5],
+      "waterDamage": [18,78,15],
+      "thunderDamage": [8,33,25],
+      "thirdSpellRaw": [1,5,55]
+    },
+    "Collapse":{
+      "manaSteal": [5,23,15,60],
+      "exploding": [75,325,25,25],
+      "meleeDamagePercent": [15,65,60,15],
+      "fireDefense": [84,45,0],
+      "waterDefense": [84,45,0],
+      "airDefense": [84,45,0],
+      "thunderDefense": [84,45,0],
+      "earthDefense": [84,45,0]
+    },
+    "Convergence": {
+      "healthRegenPercent": [13,56,20],
+      "thunderDamage": [17,72,2.5],
+      "earthDamage": [17,72,7.5],
+      "airDefense": [11,46,0],
+      "thirdSpellPercent": [13,58,70],
+      "sprintRegen": [13,56,0]
+    }
+  },
+  "Bows": {
+    "Az": {
+      "fireDamage": [12,52,10,2.5],
+      "waterDamage": [12,52,10,2.5],
+      "firstSpellCost": [7,30,80,75],
+      "xpBonus": [5,20,0,20]
+    },
+    "Freedom": {
+      "health": [300,1300,27.5],
+      "manaRegen": [3,13,60],
+      "walkSpeed": [5,20,7.5],
+      "rawSpell": [33,144,5],
+      "rawMele": [33,144,0]
+    },
+    "Grandmother": {
+      "rawHpr": [786,423,50],
+      "hprPercent": [45,24,15],
+      "walkSpeed": [8,4,0],
+      "spellPercent": [6,27,35],
+      "meleePercent": [6,27,0],
+      "xpBonus": [5,20,0],
+      "lootBonus": [8,33,0]
+    },
+    "Ignis": {
+      "Health": [1200,5200,24],
+      "rawHpr": [104,449,50],
+      "hprPercent": [12,52,24],
+      "fireDamage": [3,13,2],
+      "fireDefense": [30,130,0],
+      "airDefense": [15,65,0],
+      "forthSpellPercent": [10,45,10]
+    },
+    "Divzer": {
+      "manaSteal": [9,39,60],
+      "lifeSteal": [292,1265,30],
+      "attackSpeedBonus": [1,1,0],
+      "rawSpell": [76,329,10],
+      "rawMelee": [161,697,0],
+      "fireDamage": [715,385,0],
+      "waterDamage": [715,385,0]
+    },
+    "Spring": {
+      "manaRegen": [9,39,79],
+      "waterDamage": [6,26,20],
+      "thunderDamage": [65,35,1]
+    },
+    "Stratiformis": {
+      "health": [2600.0,1400.0,30.0],
+      "reflection": [4,16,0],
+      "walkSpeed": [23.0,99.0,65.0],
+      "spellDmg": [4.0,16.0,5.0],
+      "meleeAttack": [4,16,0]
+    },
+    "Epoch": {
+      "manaSteal": [1,1,0],
+      "lifeSteal": [248,1073,35],
+      "walkSpeed": [26,14,5],
+      "spellDamage": [12,52,0],
+      "rawMelee": [231,1000,60],
+      "firstSpellRaw": [1,1,0],
+      "fourthSpellRaw": [1,1,0],
+      "sprintBonus": [21,91,0]
+    }
+  },
+  "Daggers": {
+
+  },
+  "Wands": {
+    "Pure": {
+      "manaSteal": [6,26,30],
+      "reflection": [6,26,0],
+      "spellDamage": [120,520,60],
+      "meleeDamage": [130,70,0],
+      "xpBonus": [9,39,10]
+    },
+    "Lament": {
+      "manaSteal": [12,52,25],
+      "lifeSteal": [650,350,0],
+      "waterDamage": [24,104,60],
+      "firstSpellPercent": [10,45,15]
+    },
+    "Gaia": {
+      "thorns": [5,20,0,0],
+      "poison": [3600,15600,5,7.5],
+      "spellRaw": [357,192,0,45],
+      "meleeRaw": [173,748,80,7.5],
+      "meleePercent": [5,20,15,0],
+      "fourthSpellRaw": [3,12,0,40]
+    },
+    "Monster": {
+      "health": [900,3900,40],
+      "manaSteal": [3,13,20]
+    }
+
+  },
+  "Reliks":{
+
+  },
+  "Boots": {
+    "Slayer": {
+      "healthRegen": [351.0,189.0,17.5,15.0],
+      "mainAttackDamage": [89.0,371.0,0.0,32.5],
+      "walkSpeed": [8,35,12.5,10],
+      "thirdSpellCost": [9.0,39.0,65.0,37.5],
+      "steeling": [3.0,13.0,5.0,5.0]
+    }
+  },
+  "Chestplates": {
+
+  }
+}
