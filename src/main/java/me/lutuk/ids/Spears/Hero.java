@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hero {
-    public static double hprCurrent;
-    public static double wsCurrent;
-    public static double mainAttackCurrent;
+    private static double hprCurrent;
+    private static double wsCurrent;
+    private static double mainAttackCurrent;
 
     public static ItemStack Hero(ItemStack mainHandItem) throws IOException {
         String output = String.valueOf(mainHandItem.getNbt());
@@ -49,8 +49,7 @@ public class Hero {
         double mainAttackWeight = CalcUtils.positveStats(mainAttackList[1], mainAttackList[0], mainAttackCurrent, mainAttackList[2]);
         double wsWeight = CalcUtils.positveStats(walkSpeedList[1], walkSpeedList[0], wsCurrent, walkSpeedList[2]);
 
-        int finalWeight = (int) (hprWeight + wsWeight + mainAttackWeight);
-        System.out.println(mainHandItem.getNbt());
+        int finalWeight = (int) Math.round(hprWeight + wsWeight + mainAttackWeight);
         mainHandItem.setCustomName(Text.of(mainHandItem.getName().getString() +" " + CodingUtils.color(finalWeight)));
 
         return mainHandItem;

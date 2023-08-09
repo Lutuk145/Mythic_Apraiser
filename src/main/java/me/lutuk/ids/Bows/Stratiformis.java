@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Stratiformis {
-    public static double currentrReflection;
-    public static double currentHealth;
-    public static double currentWs;
-    public static double currentSpellDamage;
-    public static double currentMainAttackDamage;
+    private static double currentrReflection;
+    private static double currentHealth;
+    private static double currentWs;
+    private static double currentSpellDamage;
+    private static double currentMainAttackDamage;
     //115","","§7§a+25 §7Agility","","§7§a+8% §7Reflection","§7§a+39% §7Walk Speed","§7§c-2000 §7Health","§7§a+1% §7Spell Damage","§7§a+12% §7Main Attack Damage","","§7[0/3] Powder Slots","§5Mythic Item [4]","§8§8The Elves managed to harness","§8the power of air itself,","§8forming a bow made entirely","§8of air currents, allowing","§8the user to move swift like","§8the wind, but vulnerable","§8to attacks.
     //115","","§7§a+25 §7Agility","","§7§a+7% §7Reflection","§7§a+70% §7Walk Speed","§7§c-2120 §7Health","§7§a+5% §7Spell Damage","§7§a+10% §7Main Attack Damage","","§7[0/3] Powder Slots","§5Mythic Item [3]","§8§8The Elves managed to harness","§8the power of air itself,","§8forming a bow made entirely","§8of air currents, allowing","§8the user to move swift like","§8the wind, but vulnerable","§8to attacks.
     public static ItemStack Stratiformis(ItemStack mainHandItem) throws IOException {
@@ -73,7 +73,7 @@ public class Stratiformis {
         double wsWeight = CalcUtils.negativeStats(walkSpeedList[1], walkSpeedList[0], currentWs, walkSpeedList[2]);
         double mainAttackWeight = CalcUtils.negativeStats(mainAttackList[1], mainAttackList[0], currentMainAttackDamage, mainAttackList[2]);
 
-        int finalWeight1 = Integer.parseInt(String.valueOf(Math.round(wsWeight + hpWeight + spellWeight+reflectionWeight+mainAttackWeight)));
+        int finalWeight1 = (int) Math.round(wsWeight + hpWeight + spellWeight+reflectionWeight+mainAttackWeight);
         mainHandItem.setCustomName(Text.of(mainHandItem.getName().getString() + CodingUtils.color(finalWeight1)));
         System.out.println(mainHandItem.getNbt());
         return mainHandItem;
