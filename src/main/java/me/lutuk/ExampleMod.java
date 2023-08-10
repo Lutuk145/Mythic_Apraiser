@@ -27,8 +27,6 @@ public class ExampleMod implements ModInitializer {
         // This code runs as soon as Minecraft is in a mod-load-ready state.
         // However, some things (like resources) may still be uninitialized.
         // Proceed with mild caution.
-
-        LOGGER.info("Hello Fabric world!");
         getItemstack = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.examplemod.spook", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_KP_8, "category.examplemod.bindings"
 
         ));

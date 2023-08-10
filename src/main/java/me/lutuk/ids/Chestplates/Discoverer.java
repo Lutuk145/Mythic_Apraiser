@@ -30,14 +30,14 @@ public class Discoverer {
         lootBonus = lootBonus.substring(1, lootBonus.lastIndexOf("%"));
         currentlootBonus = Double.parseDouble(lootBonus);
 
-        double[] lootBonusList = gson.fromJson(jsonObject.get("chestplates").getAsJsonObject().get("Discoverer").getAsJsonObject().get("lootBonus"), double[].class);
+        double[] lootBonusList = gson.fromJson(jsonObject.get("Chestplates").getAsJsonObject().get("Discoverer").getAsJsonObject().get("lootBonus"), double[].class);
         double lootBonusWeight = CalcUtils.positveStats(lootBonusList[1],lootBonusList[0],currentlootBonus,lootBonusList[2]);
         String xpBonus= getLore.get(2);
         xpBonus= xpBonus.toLowerCase().replaceAll("[^1234567890%]", "");
         xpBonus = xpBonus.substring(1, xpBonus.lastIndexOf("%"));
         currentxpBonus = Double.parseDouble(xpBonus);
 
-        double[] xpBonusList = gson.fromJson(jsonObject.get("chestplates").getAsJsonObject().get("Discoverer").getAsJsonObject().get("xpBonus"), double[].class);
+        double[] xpBonusList = gson.fromJson(jsonObject.get("Chestplates").getAsJsonObject().get("Discoverer").getAsJsonObject().get("xpBonus"), double[].class);
         double xpBonusWeight = CalcUtils.positveStats(xpBonusList[1],xpBonusList[0],currentxpBonus,xpBonusList[2]);
 
         int finalWeight = (int) Math.round (lootBonusWeight+xpBonusWeight);

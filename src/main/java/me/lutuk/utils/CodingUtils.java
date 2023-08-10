@@ -1,6 +1,7 @@
 package me.lutuk.utils;
 
 import me.lutuk.ids.Chestplates.Discoverer;
+import me.lutuk.ids.Reliks.*;
 import me.lutuk.ids.Spears.*;
 import me.lutuk.ids.Boots.Slayer;
 import me.lutuk.ids.Bows.Stratiformis;
@@ -127,28 +128,28 @@ public class CodingUtils {
             //RELIKS
             case "§5Absolution":
             case "§5AbsolutionÀ":
-                return currentItem;
+                return Absolution.Absolution(currentItem);
             case "§5Aftershock":
             case "§5AftershockÀ":
-                return currentItem;
+                return Aftershock.AfterShock(currentItem);
             case "§5Fantasia":
             case "§5FantasiaÀ":
-                return currentItem;
+                return Fantasia.Fantasia(currentItem);
             case "§5Hadal":
             case "§5HadalÀ":
-                return currentItem;
+                return Hadal.Hadal(currentItem);
             case "§5Immolation":
             case "§5ImmolationÀ":
-                return currentItem;
+                return Immolation.Immolation(currentItem);
             case "§5Olympic":
             case "§5OlympicÀ":
-                return currentItem;
-            case "Sunstar":
-            case "SunstarÀ":
-                return currentItem;
+                return Olympic.Olympic(currentItem);
+            case "§5Sunstar":
+            case "§5SunstarÀ":
+                return Sunstar.Sunstar(currentItem);
             case "§5Toxoplasmosis":
             case "§5ToxoplasmosisÀ":
-                return currentItem;
+                return Toxoplasmosis.Toxoplasmosis(currentItem);
             //SPEAR
             case "§5Alkatraz":
             case "§5AlkatrazÀ":

@@ -294,10 +294,10 @@
       "manaRegen": [26,14,25],
       "manaSteal": [26,14,15],
       "spellDamage": [9,39,20],
-      "firstSPellPercent": [8,35,0],
-      "secondSPellPercent": [8,35,0],
-      "thirdSPellPercent": [8,35,30],
-      "fourthSPellPercent": [8,35,10]
+      "firstSpellPercent": [8,35,0],
+      "secondSpellPercent": [8,35,0],
+      "thirdSpellPercent": [8,35,30],
+      "fourthSpellPercent": [8,35,10]
     },
     "Toxoplasmosis": {
       "manaSteal": [5,23,5],
