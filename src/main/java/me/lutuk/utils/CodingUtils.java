@@ -1,10 +1,11 @@
 package me.lutuk.utils;
 
+import me.lutuk.ids.Boots.Slayer;
+import me.lutuk.ids.Bows.*;
 import me.lutuk.ids.Chestplates.Discoverer;
+import me.lutuk.ids.Daggers.*;
 import me.lutuk.ids.Reliks.*;
 import me.lutuk.ids.Spears.*;
-import me.lutuk.ids.Boots.Slayer;
-import me.lutuk.ids.Bows.Stratiformis;
 import me.lutuk.ids.Wands.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
@@ -30,8 +31,7 @@ public class CodingUtils {
             return " §b" + weight;
         } else if (weight == 100) {
             return " §6§l" + weight;
-        }
-        else {
+        } else {
             return null;
         }
     }
@@ -74,25 +74,25 @@ public class CodingUtils {
             //BOWS
             case "§5Az":
             case "§5AzÀ":
-                return currentItem;
+                return Az.Az(currentItem);
             case "§5Divzer":
             case "§5DivzerÀ":
-                return currentItem;
+                return Divzer.Divzer(currentItem);
             case "§5Epoch":
             case "§5EpochÀ":
-                return currentItem;
+                return Epoch.Epoch(currentItem);
             case "§5Freedom":
             case "§5FreedomÀ":
-                return currentItem;
+                return Freedom.Freedom(currentItem);
             case "§5Grandmother":
             case "§5GrandmotherÀ":
-                return currentItem;
+                return Grandmother.Grandmother(currentItem);
             case "§5Ignis":
             case "§5IgnisÀ":
-                return currentItem;
+                return Ignis.Ignis(currentItem);
             case "§5Spring":
             case "§5SpringÀ":
-                return currentItem;
+                return Spring.Spring(currentItem);
             case "§5Stratiformis":
             case "§5StratiformisÀ":
                 return Stratiformis.Stratiformis(currentItem);
@@ -103,28 +103,28 @@ public class CodingUtils {
             //DAGGERS
             case "§5Archangel":
             case "§5ArchangelÀ":
-                return currentItem;
+                return Archangel.Archangel(currentItem);
             case "§5Cataclysm":
             case "§5CataclysmÀ":
-                return currentItem;
+                return Cataclysm.Cataclysm(currentItem);
             case "§5Grimtrap":
             case "§5GrimtrapÀ":
-                return currentItem;
-            case "§5Imfero":
-            case "§5ImferoÀ":
-                 return currentItem;
+                return Grimtrap.Grimtrap(currentItem);
+            case "§5Inferno":
+            case "§5InfernoÀ":
+                return Inferno.Inferno(currentItem);
             case "§5Nirvana":
             case "§5NirvanaÀ":
-                return currentItem;
+                return Nirvana.Nirvana(currentItem);
             case "§5Nullification":
             case "§5NullificationÀ":
-                return currentItem;
+                return Nullification.Nullification(currentItem);
             case "§5Oblivion":
             case "§5OblivionÀ":
-                return currentItem;
+                return Oblivion.Oblivion(currentItem);
             case "§5Weathered":
             case "§5WeatheredÀ":
-                return currentItem;
+                return Weathered.Weathered(currentItem);
             //RELIKS
             case "§5Absolution":
             case "§5AbsolutionÀ":
