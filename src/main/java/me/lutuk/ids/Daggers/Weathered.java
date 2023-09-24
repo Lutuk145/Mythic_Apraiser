@@ -18,7 +18,7 @@ public class Weathered {
     private static double currentexploding;
     private static double currentwalkSpeed;
     private static double currentairDamage;
-    public static ItemStack Weathered(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Weathered(ItemStack mainHandItem,int i) throws IOException {
 
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
@@ -30,7 +30,7 @@ public class Weathered {
             return null;
         }
 
-        String manaSteal= getLore.get(4);
+        String manaSteal= getLore.get(i+4);
         manaSteal= manaSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         manaSteal = manaSteal.substring(1, manaSteal.lastIndexOf("/"));
         currentmanaSteal = Double.parseDouble(manaSteal);
@@ -38,28 +38,28 @@ public class Weathered {
         double[] manaStealList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Weathered").getAsJsonObject().get("manaSteal"), double[].class);
         double manaStealWeight = CalcUtils.positveStats(manaStealList[1],manaStealList[0],currentmanaSteal,manaStealList[2]);
 
-        String reflection= getLore.get(5);
+        String reflection= getLore.get(i+5);
         reflection= reflection.toLowerCase().replaceAll("[^1234567890%]", "");
         reflection = reflection.substring(1, reflection.lastIndexOf("%"));
         currentreflection = Double.parseDouble(reflection);
 
         double[] reflectionList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Weathered").getAsJsonObject().get("reflection"), double[].class);
         double reflectionWeight = CalcUtils.positveStats(reflectionList[1],reflectionList[0],currentreflection,reflectionList[2]);
-        String exploding= getLore.get(6);
+        String exploding= getLore.get(i+6);
         exploding= exploding.toLowerCase().replaceAll("[^1234567890%]", "");
         exploding = exploding.substring(1, exploding.lastIndexOf("%"));
         currentexploding = Double.parseDouble(exploding);
 
         double[] explodingList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Weathered").getAsJsonObject().get("exploding"), double[].class);
         double explodingWeight = CalcUtils.negativeStats(explodingList[1],explodingList[0],currentexploding,explodingList[2]);
-        String walkSpeed= getLore.get(7);
+        String walkSpeed= getLore.get(i+7);
         walkSpeed= walkSpeed.toLowerCase().replaceAll("[^1234567890%]", "");
         walkSpeed = walkSpeed.substring(1, walkSpeed.lastIndexOf("%"));
         currentwalkSpeed = Double.parseDouble(walkSpeed);
 
         double[] walkSpeedList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Weathered").getAsJsonObject().get("walkSpeed"), double[].class);
         double walkSpeedWeight = CalcUtils.positveStats(walkSpeedList[1],walkSpeedList[0],currentwalkSpeed,walkSpeedList[2]);
-        String airDamage= getLore.get(9);
+        String airDamage= getLore.get(i+9);
         airDamage= airDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         airDamage = airDamage.substring(1, airDamage.lastIndexOf("%"));
         currentairDamage = Double.parseDouble(airDamage);

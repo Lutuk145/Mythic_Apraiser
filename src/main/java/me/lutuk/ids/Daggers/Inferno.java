@@ -20,7 +20,7 @@ public class Inferno {
     private static double currentmeleePercent;
     private static double currentmeleeRaw;
     private static double currentwaterDefense;
-    public static ItemStack Inferno(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Inferno(ItemStack mainHandItem,int i) throws IOException {
 
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
@@ -31,21 +31,21 @@ public class Inferno {
         if (getLore.isEmpty()) {
             return null;
         }
-        String healthRegenPercent= getLore.get(4);
+        String healthRegenPercent= getLore.get(i+4);
         healthRegenPercent= healthRegenPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         healthRegenPercent = healthRegenPercent.substring(1, healthRegenPercent.lastIndexOf("%"));
         currenthealthRegenPercent = Double.parseDouble(healthRegenPercent);
 
         double[] healthRegenPercentList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Inferno").getAsJsonObject().get("healthRegenPercent"), double[].class);
         double healthRegenPercentWeight = CalcUtils.negativeStats(healthRegenPercentList[1],healthRegenPercentList[0],currenthealthRegenPercent,healthRegenPercentList[2]);
-        String walkSpeed= getLore.get(6);
+        String walkSpeed= getLore.get(i+6);
         walkSpeed= walkSpeed.toLowerCase().replaceAll("[^1234567890%]", "");
         walkSpeed = walkSpeed.substring(1, walkSpeed.lastIndexOf("%"));
         currentwalkSpeed = Double.parseDouble(walkSpeed);
 
         double[] walkSpeedList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Inferno").getAsJsonObject().get("walkSpeed"), double[].class);
         double walkSpeedWeight = CalcUtils.positveStats(walkSpeedList[1],walkSpeedList[0],currentwalkSpeed,walkSpeedList[2]);
-        String health= getLore.get(7);
+        String health= getLore.get(i+7);
         if (health.contains("*")){
             health=health.toLowerCase().replaceAll("[^1234567890/*]", "");
             health=health.substring(1,health.indexOf("*")-1);
@@ -57,21 +57,21 @@ public class Inferno {
 
         double[] healthList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Inferno").getAsJsonObject().get("health"), double[].class);
         double healthWeight = CalcUtils.positveStats(healthList[1],healthList[0],currenthealth,healthList[2]);
-        String fireDamage= getLore.get(8);
+        String fireDamage= getLore.get(i+8);
         fireDamage= fireDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         fireDamage = fireDamage.substring(1, fireDamage.lastIndexOf("%"));
         currentfireDamage = Double.parseDouble(fireDamage);
 
         double[] fireDamageList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Inferno").getAsJsonObject().get("fireDamage"), double[].class);
         double fireDamageWeight = CalcUtils.positveStats(fireDamageList[1],fireDamageList[0],currentfireDamage,fireDamageList[2]);
-        String meleePercent= getLore.get(9);
+        String meleePercent= getLore.get(i+9);
         meleePercent= meleePercent.toLowerCase().replaceAll("[^1234567890%]", "");
         meleePercent = meleePercent.substring(1, meleePercent.lastIndexOf("%"));
         currentmeleePercent = Double.parseDouble(meleePercent);
 
         double[] meleePercentList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Inferno").getAsJsonObject().get("meleePercent"), double[].class);
         double meleePercentWeight = CalcUtils.positveStats(meleePercentList[1],meleePercentList[0],currentmeleePercent,meleePercentList[2]);
-        String meleeRaw= getLore.get(10);
+        String meleeRaw= getLore.get(i+10);
         if (meleeRaw.contains("*")){
             meleeRaw=meleeRaw.toLowerCase().replaceAll("[^1234567890/*]", "");
             meleeRaw=meleeRaw.substring(1,meleeRaw.indexOf("*")-1);
@@ -83,7 +83,7 @@ public class Inferno {
 
         double[] meleeRawList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Inferno").getAsJsonObject().get("meleeRaw"), double[].class);
         double meleeRawWeight = CalcUtils.positveStats(meleeRawList[1],meleeRawList[0],currentmeleeRaw,meleeRawList[2]);
-        String waterDefense= getLore.get(11);
+        String waterDefense= getLore.get(i+11);
         waterDefense= waterDefense.toLowerCase().replaceAll("[^1234567890%]", "");
         waterDefense = waterDefense.substring(1, waterDefense.lastIndexOf("%"));
         currentwaterDefense = Double.parseDouble(waterDefense);

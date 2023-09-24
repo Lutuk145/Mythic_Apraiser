@@ -17,7 +17,7 @@ public class Az {
     private static double currentfireDamage;
     private static double currentwaterDamage;
     private static double currentfirstSpellCost;
-    public static ItemStack Az(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Az(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -27,7 +27,7 @@ public class Az {
         if (getLore.isEmpty()) {
             return null;
         }
-        String xpBonus= getLore.get(5);
+        String xpBonus= getLore.get(i+5);
         xpBonus= xpBonus.toLowerCase().replaceAll("[^1234567890%]", "");
         xpBonus = xpBonus.substring(1, xpBonus.lastIndexOf("%"));
         currentxpBonus = Double.parseDouble(xpBonus);
@@ -35,7 +35,7 @@ public class Az {
         double[] xpBonusList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Az").getAsJsonObject().get("xpBonus"), double[].class);
         double xpBonusWeight1 = CalcUtils.positveStats(xpBonusList[1],xpBonusList[0],currentxpBonus,xpBonusList[2]);
         double xpBonusWeight2 = CalcUtils.positveStats(xpBonusList[1],xpBonusList[0],currentxpBonus,xpBonusList[3]);
-        String fireDamage= getLore.get(6);
+        String fireDamage= getLore.get(i+6);
         fireDamage= fireDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         fireDamage = fireDamage.substring(1, fireDamage.lastIndexOf("%"));
         currentfireDamage = Double.parseDouble(fireDamage);
@@ -43,7 +43,7 @@ public class Az {
         double[] fireDamageList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Az").getAsJsonObject().get("fireDamage"), double[].class);
         double fireDamageWeight1 = CalcUtils.positveStats(fireDamageList[1],fireDamageList[0],currentfireDamage,fireDamageList[2]);
         double fireDamageWeight2 = CalcUtils.positveStats(fireDamageList[1],fireDamageList[0],currentfireDamage,fireDamageList[3]);
-        String waterDamage= getLore.get(7);
+        String waterDamage= getLore.get(i+7);
         waterDamage= waterDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         waterDamage = waterDamage.substring(1, waterDamage.lastIndexOf("%"));
         currentwaterDamage = Double.parseDouble(waterDamage);
@@ -51,7 +51,7 @@ public class Az {
         double[] waterDamageList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Az").getAsJsonObject().get("waterDamage"), double[].class);
         double waterDamageWeight1 = CalcUtils.positveStats(waterDamageList[1],waterDamageList[0],currentwaterDamage,waterDamageList[2]);
         double waterDamageWeight2 = CalcUtils.positveStats(waterDamageList[1],waterDamageList[0],currentwaterDamage,waterDamageList[3]);
-        String firstSpellCost= getLore.get(8);
+        String firstSpellCost= getLore.get(i+8);
         firstSpellCost= firstSpellCost.toLowerCase().replaceAll("[^1234567890%]", "");
         firstSpellCost = firstSpellCost.substring(1, firstSpellCost.lastIndexOf("%"));
         currentfirstSpellCost = Double.parseDouble(firstSpellCost);

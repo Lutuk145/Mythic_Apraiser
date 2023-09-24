@@ -19,7 +19,7 @@ public class Oblivion {
     private static double currentsoulPointRegen;
     private static double currentspellRaw;
     private static double currentsecondSpellRaw;
-    public static ItemStack Oblivion(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Oblivion(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -30,7 +30,7 @@ public class Oblivion {
             return null;
         }
 
-        String manaRegen= getLore.get(4);
+        String manaRegen= getLore.get(i+4);
         manaRegen= manaRegen.toLowerCase().replaceAll("[^1234567890/]", "");
         manaRegen = manaRegen.substring(1, manaRegen.lastIndexOf("/"));
         currentmanaRegen = Double.parseDouble(manaRegen);
@@ -40,7 +40,7 @@ public class Oblivion {
         double manaRegenWeight2 = CalcUtils.negativeStats(manaRegenList[1],manaRegenList[0],currentmanaRegen,manaRegenList[3]);
 
 
-        String manaSteal= getLore.get(5);
+        String manaSteal= getLore.get(i+5);
         manaSteal= manaSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         manaSteal = manaSteal.substring(1, manaSteal.lastIndexOf("/"));
         currentmanaSteal = Double.parseDouble(manaSteal);
@@ -49,7 +49,7 @@ public class Oblivion {
         double manaStealWeight1 = CalcUtils.positveStats(manaStealList[1],manaStealList[0],currentmanaSteal,manaStealList[2]);
         double manaStealWeight2 = CalcUtils.positveStats(manaStealList[1],manaStealList[0],currentmanaSteal,manaStealList[3]);
 
-        String exploding= getLore.get(6);
+        String exploding= getLore.get(i+6);
         exploding= exploding.toLowerCase().replaceAll("[^1234567890%]", "");
         exploding = exploding.substring(1, exploding.lastIndexOf("%"));
         currentexploding = Double.parseDouble(exploding);
@@ -57,7 +57,7 @@ public class Oblivion {
         double[] explodingList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Oblivion").getAsJsonObject().get("exploding"), double[].class);
         double explodingWeight1 = CalcUtils.positveStats(explodingList[1],explodingList[0],currentexploding,explodingList[2]);
         double explodingWeight2 = CalcUtils.positveStats(explodingList[1],explodingList[0],currentexploding,explodingList[3]);
-        String soulPointRegen= getLore.get(7);
+        String soulPointRegen= getLore.get(i+7);
         soulPointRegen= soulPointRegen.toLowerCase().replaceAll("[^1234567890%]", "");
         soulPointRegen = soulPointRegen.substring(1, soulPointRegen.lastIndexOf("%"));
         currentsoulPointRegen = Double.parseDouble(soulPointRegen);
@@ -65,7 +65,7 @@ public class Oblivion {
         double[] soulPointRegenList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Oblivion").getAsJsonObject().get("soulPointRegen"), double[].class);
         double soulPointRegenWeight1 = CalcUtils.positveStats(soulPointRegenList[1],soulPointRegenList[0],currentsoulPointRegen,soulPointRegenList[2]);
         double soulPointRegenWeight2 = CalcUtils.positveStats(soulPointRegenList[1],soulPointRegenList[0],currentsoulPointRegen,soulPointRegenList[3]);
-        String spellRaw= getLore.get(8);
+        String spellRaw= getLore.get(i+8);
         if (spellRaw.contains("*")){
             spellRaw=spellRaw.toLowerCase().replaceAll("[^1234567890/*]", "");
             spellRaw=spellRaw.substring(1,spellRaw.indexOf("*")-1);
@@ -78,7 +78,7 @@ public class Oblivion {
         double[] spellRawList = gson.fromJson(jsonObject.get("Daggers").getAsJsonObject().get("Oblivion").getAsJsonObject().get("spellRaw"), double[].class);
         double spellRawWeight1 = CalcUtils.positveStats(spellRawList[1],spellRawList[0],currentspellRaw,spellRawList[2]);
         double spellRawWeight2 = CalcUtils.positveStats(spellRawList[1],spellRawList[0],currentspellRaw,spellRawList[3]);
-        String secondSpellRaw= getLore.get(9);
+        String secondSpellRaw= getLore.get(i+9);
         if (secondSpellRaw.contains("*")){
             secondSpellRaw=secondSpellRaw.toLowerCase().replaceAll("[^1234567890/*]", "");
             secondSpellRaw=secondSpellRaw.substring(1,secondSpellRaw.indexOf("*")-1);

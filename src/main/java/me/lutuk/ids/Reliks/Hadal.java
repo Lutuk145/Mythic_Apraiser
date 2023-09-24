@@ -17,7 +17,7 @@ public class Hadal {
     private static double currentspellDamage;
     private static double currentthirdSpellPercent;
     private static double currentfourthSpellPercent;
-    public static ItemStack Hadal(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Hadal(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -28,7 +28,7 @@ public class Hadal {
             return null;
         }
 
-        String manaRegen= getLore.get(2);
+        String manaRegen= getLore.get(i+2);
         manaRegen= manaRegen.toLowerCase().replaceAll("[^1234567890/]", "");
         manaRegen = manaRegen.substring(1, manaRegen.lastIndexOf("/"));
         currentmanaRegen = Double.parseDouble(manaRegen);
@@ -36,21 +36,21 @@ public class Hadal {
         double[] manaRegenList = gson.fromJson(jsonObject.get("Reliks").getAsJsonObject().get("Hadal").getAsJsonObject().get("manaRegen"), double[].class);
         double manaRegenWeight = CalcUtils.positveStats(manaRegenList[1],manaRegenList[0],currentmanaRegen,manaRegenList[2]);
 
-        String spellDamage= getLore.get(3);
+        String spellDamage= getLore.get(i+3);
         spellDamage= spellDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         spellDamage = spellDamage.substring(1, spellDamage.lastIndexOf("%"));
         currentspellDamage = Double.parseDouble(spellDamage);
 
         double[] spellDamageList = gson.fromJson(jsonObject.get("Reliks").getAsJsonObject().get("Hadal").getAsJsonObject().get("spellDamage"), double[].class);
         double spellDamageWeight = CalcUtils.positveStats(spellDamageList[1],spellDamageList[0],currentspellDamage,spellDamageList[2]);
-        String thirdSpellPercent= getLore.get(4);
+        String thirdSpellPercent= getLore.get(i+4);
         thirdSpellPercent= thirdSpellPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         thirdSpellPercent = thirdSpellPercent.substring(1, thirdSpellPercent.lastIndexOf("%"));
         currentthirdSpellPercent = Double.parseDouble(thirdSpellPercent);
 
         double[] thirdSpellPercentList = gson.fromJson(jsonObject.get("Reliks").getAsJsonObject().get("Hadal").getAsJsonObject().get("thirdSpellPercent"), double[].class);
         double thirdSpellPercentWeight = CalcUtils.negativeStats(thirdSpellPercentList[1],thirdSpellPercentList[0],currentthirdSpellPercent,thirdSpellPercentList[2]);
-        String fourthSpellPercent= getLore.get(5);
+        String fourthSpellPercent= getLore.get(i+5);
         fourthSpellPercent= fourthSpellPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         fourthSpellPercent = fourthSpellPercent.substring(1, fourthSpellPercent.lastIndexOf("%"));
         currentfourthSpellPercent = Double.parseDouble(fourthSpellPercent);

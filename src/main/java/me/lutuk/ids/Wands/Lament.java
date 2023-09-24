@@ -17,7 +17,7 @@ public class Lament{
     private static double currentmanaSteal;
     private static double currentwaterdamage;
     private static double currentfirstSpellPercent;
-    public static ItemStack Lament(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Lament(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -28,7 +28,7 @@ public class Lament{
             return null;
         }
 
-        String lifeSteal= getLore.get(4);
+        String lifeSteal= getLore.get(i+4);
         lifeSteal= lifeSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         lifeSteal = lifeSteal.substring(1, lifeSteal.lastIndexOf("/"));
         currentlifeSteal = Double.parseDouble(lifeSteal);
@@ -37,7 +37,7 @@ public class Lament{
         double lifeStealWeight = CalcUtils.negativeStats(lifeStealList[1],lifeStealList[0],currentlifeSteal,lifeStealList[2]);
 
 
-        String manaSteal= getLore.get(5);
+        String manaSteal= getLore.get(i+5);
         manaSteal= manaSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         manaSteal = manaSteal.substring(1, manaSteal.lastIndexOf("/"));
         currentmanaSteal = Double.parseDouble(manaSteal);
@@ -45,14 +45,14 @@ public class Lament{
         double[] manaStealList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Lament").getAsJsonObject().get("manaSteal"), double[].class);
         double manaStealWeight = CalcUtils.positveStats(manaStealList[1],manaStealList[0],currentmanaSteal,manaStealList[2]);
 
-        String waterdamage= getLore.get(6);
+        String waterdamage= getLore.get(i+6);
         waterdamage= waterdamage.toLowerCase().replaceAll("[^1234567890%]", "");
         waterdamage = waterdamage.substring(1, waterdamage.lastIndexOf("%"));
         currentwaterdamage = Double.parseDouble(waterdamage);
 
         double[] waterdamageList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Lament").getAsJsonObject().get("waterDamage"), double[].class);
         double waterdamageWeight = CalcUtils.positveStats(waterdamageList[1],waterdamageList[0],currentwaterdamage,waterdamageList[2]);
-        String firstSpellPercent= getLore.get(7);
+        String firstSpellPercent= getLore.get(i+7);
         firstSpellPercent= firstSpellPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         firstSpellPercent = firstSpellPercent.substring(1, firstSpellPercent.lastIndexOf("%"));
         currentfirstSpellPercent = Double.parseDouble(firstSpellPercent);

@@ -27,5 +27,8 @@
 	},
 	"suggests": {
 		"another-mod": "*"
-	}
+	},
+	"mixins": [
+		"mythicapraiser.mixins.json"
+	]
 }

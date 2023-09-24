@@ -19,7 +19,7 @@ public class Immolation {
     private static double currentwaterDamage;
     private static double currentairDamage;
     private static double currentthirdSpellPercent;
-    public static ItemStack Immolation(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Immolation(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -29,14 +29,14 @@ public class Immolation {
         if (getLore.isEmpty()) {
             return null;
         }
-        String hprPercent = getLore.get(5);
+        String hprPercent = getLore.get(i+5);
         hprPercent = hprPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         hprPercent = hprPercent.substring(1, hprPercent.lastIndexOf("%"));
         currenthprPercent = Double.parseDouble(hprPercent);
 
         double[] hprPercentList = gson.fromJson(jsonObject.get("Reliks").getAsJsonObject().get("Immolation").getAsJsonObject().get("hprPercent"), double[].class);
         double hprPercentWeight = CalcUtils.negativeStats(hprPercentList[1], hprPercentList[0], currenthprPercent, hprPercentList[2]);
-        String health = getLore.get(6);
+        String health = getLore.get(i+6);
         if (health.contains("*")) {
             health = health.toLowerCase().replaceAll("[^1234567890/*]", "");
             health = health.substring(1, health.indexOf("*") - 1);
@@ -48,28 +48,28 @@ public class Immolation {
 
         double[] healthList = gson.fromJson(jsonObject.get("Reliks").getAsJsonObject().get("Immolation").getAsJsonObject().get("health"), double[].class);
         double healthWeight = CalcUtils.negativeStats(healthList[1], healthList[0], currenthealth, healthList[2]);
-        String fireDamage = getLore.get(7);
+        String fireDamage = getLore.get(i+7);
         fireDamage = fireDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         fireDamage = fireDamage.substring(1, fireDamage.lastIndexOf("%"));
         currentfireDamage = Double.parseDouble(fireDamage);
 
         double[] fireDamageList = gson.fromJson(jsonObject.get("Reliks").getAsJsonObject().get("Immolation").getAsJsonObject().get("fireDamage"), double[].class);
         double fireDamageWeight = CalcUtils.positveStats(fireDamageList[1], fireDamageList[0], currentfireDamage, fireDamageList[2]);
-        String waterDamage = getLore.get(8);
+        String waterDamage = getLore.get(i+8);
         waterDamage = waterDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         waterDamage = waterDamage.substring(1, waterDamage.lastIndexOf("%"));
         currentwaterDamage = Double.parseDouble(waterDamage);
 
         double[] waterDamageList = gson.fromJson(jsonObject.get("Reliks").getAsJsonObject().get("Immolation").getAsJsonObject().get("waterDamage"), double[].class);
         double waterDamageWeight = CalcUtils.negativeStats(waterDamageList[1], waterDamageList[0], currentwaterDamage, waterDamageList[2]);
-        String airDamage = getLore.get(9);
+        String airDamage = getLore.get(i+9);
         airDamage = airDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         airDamage = airDamage.substring(1, airDamage.lastIndexOf("%"));
         currentairDamage = Double.parseDouble(airDamage);
 
         double[] airDamageList = gson.fromJson(jsonObject.get("Reliks").getAsJsonObject().get("Immolation").getAsJsonObject().get("airDamage"), double[].class);
         double airDamageWeight = CalcUtils.positveStats(airDamageList[1], airDamageList[0], currentairDamage, airDamageList[2]);
-        String thirdSpellPercent = getLore.get(10);
+        String thirdSpellPercent = getLore.get(i+10);
         thirdSpellPercent = thirdSpellPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         thirdSpellPercent = thirdSpellPercent.substring(1, thirdSpellPercent.lastIndexOf("%"));
         currentthirdSpellPercent = Double.parseDouble(thirdSpellPercent);

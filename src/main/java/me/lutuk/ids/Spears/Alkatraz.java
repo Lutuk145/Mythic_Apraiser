@@ -17,7 +17,7 @@ public class Alkatraz {
     private static double earthDamageCurrent;
     private static double mainAttackCurrent;
 
-    public static ItemStack Alkatraz(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Alkatraz(ItemStack mainHandItem,int i) throws IOException {
         String output = String.valueOf(mainHandItem.getNbt());
         output = output.substring(output.lastIndexOf("Min:") + 5);
         List<String> getLore = new ArrayList<>();
@@ -25,9 +25,9 @@ public class Alkatraz {
         if (getLore.isEmpty()) {
             return null;
         }
-        String exploding = getLore.get(8);
-        String earthDamage = getLore.get(9);
-        String mainAttack = getLore.get(10);
+        String exploding = getLore.get(i+8);
+        String earthDamage = getLore.get(i+9);
+        String mainAttack = getLore.get(i+10);
 
         exploding = exploding.toLowerCase().replaceAll("[^1234567890]", "").substring(1, 3);
         explodingCurrent = Integer.parseInt(exploding);

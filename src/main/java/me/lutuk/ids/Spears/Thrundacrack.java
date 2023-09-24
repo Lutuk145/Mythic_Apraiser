@@ -18,7 +18,7 @@ public class Thrundacrack {
     private static double currentWaterDamage;
     private static double currentThunderDamage;
     private static double currentThirdSpell;
-    public static ItemStack Thrundacrack(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Thrundacrack(ItemStack mainHandItem,int i) throws IOException {
         String output = String.valueOf(mainHandItem.getNbt());
 
         output = output.substring(output.lastIndexOf("Min:") + 5);
@@ -27,11 +27,11 @@ public class Thrundacrack {
         if (getLore.isEmpty()) {
             return null;
         }
-        String hpr = getLore.get(4);
-        String ws = getLore.get(5);
-        String waterDamage = getLore.get(6);
-        String thunderDamage = getLore.get(7);
-        String thirdSpell = getLore.get(8);
+        String hpr = getLore.get(i+4);
+        String ws = getLore.get(i+5);
+        String waterDamage = getLore.get(i+6);
+        String thunderDamage = getLore.get(i+7);
+        String thirdSpell = getLore.get(i+8);
 
         hpr = hpr.toLowerCase().replaceAll("[^1234567890%]", "");
         hpr = hpr.substring(1, hpr.lastIndexOf("%"));

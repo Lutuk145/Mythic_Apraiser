@@ -16,7 +16,7 @@ public class Spring {
     private static double currentmanaRegen;
     private static double currentwaterDamage;
     private static double currentthunderDamage;
-    public static ItemStack Spring(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Spring(ItemStack mainHandItem,int i) throws IOException {
 
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
@@ -28,7 +28,7 @@ public class Spring {
             return null;
         }
 
-        String manaRegen= getLore.get(6);
+        String manaRegen= getLore.get(i+6);
         manaRegen= manaRegen.toLowerCase().replaceAll("[^1234567890/]", "");
         manaRegen = manaRegen.substring(1, manaRegen.lastIndexOf("/"));
         currentmanaRegen = Double.parseDouble(manaRegen);
@@ -36,14 +36,14 @@ public class Spring {
         double[] manaRegenList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Spring").getAsJsonObject().get("manaRegen"), double[].class);
         double manaRegenWeight = CalcUtils.positveStats(manaRegenList[1],manaRegenList[0],currentmanaRegen,manaRegenList[2]);
 
-        String waterDamage= getLore.get(7);
+        String waterDamage= getLore.get(i+7);
         waterDamage= waterDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         waterDamage = waterDamage.substring(1, waterDamage.lastIndexOf("%"));
         currentwaterDamage = Double.parseDouble(waterDamage);
 
         double[] waterDamageList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Spring").getAsJsonObject().get("waterDamage"), double[].class);
         double waterDamageWeight = CalcUtils.positveStats(waterDamageList[1],waterDamageList[0],currentwaterDamage,waterDamageList[2]);
-        String thunderDamage= getLore.get(8);
+        String thunderDamage= getLore.get(i+8);
         thunderDamage= thunderDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         thunderDamage = thunderDamage.substring(1, thunderDamage.lastIndexOf("%"));
         currentthunderDamage = Double.parseDouble(thunderDamage);

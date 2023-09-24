@@ -18,7 +18,7 @@ public class Hero {
     private static double wsCurrent;
     private static double mainAttackCurrent;
 
-    public static ItemStack Hero(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Hero(ItemStack mainHandItem,int i) throws IOException {
         String output = String.valueOf(mainHandItem.getNbt());
         output = output.substring(output.lastIndexOf("Min:") + 5);
         List<String> getLore = new ArrayList<>();
@@ -26,9 +26,9 @@ public class Hero {
         if (getLore.isEmpty()) {
             return null;
         }
-        String hpr = getLore.get(6);
-        String ws = getLore.get(7);
-        String mainAttack = getLore.get(8);
+        String hpr = getLore.get(i+6);
+        String ws = getLore.get(i+7);
+        String mainAttack = getLore.get(i+8);
 
         hpr = hpr.toLowerCase().replaceAll("[^1234567890]", "").substring(1, 3);
         hprCurrent = Integer.parseInt(hpr);

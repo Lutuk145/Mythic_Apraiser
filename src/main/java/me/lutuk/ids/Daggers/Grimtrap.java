@@ -20,7 +20,7 @@ public class Grimtrap {
     private static double currentfourthSpellRaw;
 
 
-    public static ItemStack Grimtrap(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Grimtrap(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -31,7 +31,7 @@ public class Grimtrap {
             return null;
         }
 
-        String lifeSteal= getLore.get(4);
+        String lifeSteal= getLore.get(i+4);
         lifeSteal= lifeSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         lifeSteal = lifeSteal.substring(1, lifeSteal.lastIndexOf("/"));
         currentlifeSteal = Double.parseDouble(lifeSteal);
@@ -41,7 +41,7 @@ public class Grimtrap {
         double lifeStealWeight2 = CalcUtils.positveStats(lifeStealList[1],lifeStealList[0],currentlifeSteal,lifeStealList[3]);
 
 
-        String manaSteal= getLore.get(5);
+        String manaSteal= getLore.get(i+5);
         manaSteal= manaSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         manaSteal = manaSteal.substring(1, manaSteal.lastIndexOf("/"));
         currentmanaSteal = Double.parseDouble(manaSteal);
@@ -50,7 +50,7 @@ public class Grimtrap {
         double manaStealWeight1 = CalcUtils.negativeStats(manaStealList[1],manaStealList[0],currentmanaSteal,manaStealList[2]);
         double manaStealWeight2 = CalcUtils.negativeStats(manaStealList[1],manaStealList[0],currentmanaSteal,manaStealList[3]);
 
-        String thorns= getLore.get(6);
+        String thorns= getLore.get(i+6);
         thorns= thorns.toLowerCase().replaceAll("[^1234567890%]", "");
         thorns = thorns.substring(1, thorns.lastIndexOf("%"));
         currentthorns = Double.parseDouble(thorns);
@@ -59,7 +59,7 @@ public class Grimtrap {
         double thornsWeight1 = CalcUtils.positveStats(thornsList[1],thornsList[0],currentthorns,thornsList[2]);
         double thornsWeight2 = CalcUtils.positveStats(thornsList[1],thornsList[0],currentthorns,thornsList[3]);
 
-        String poison= getLore.get(7);
+        String poison= getLore.get(i+7);
         poison= poison.toLowerCase().replaceAll("[^1234567890/]", "");
         poison = poison.substring(1, poison.lastIndexOf("/"));
         currentpoison = Double.parseDouble(poison);
@@ -68,7 +68,7 @@ public class Grimtrap {
         double poisonWeight1 = CalcUtils.positveStats(poisonList[1],poisonList[0],currentpoison,poisonList[2]);
         double poisonWeight2 = CalcUtils.positveStats(poisonList[1],poisonList[0],currentpoison,poisonList[3]);
 
-        String fourthSpellRaw= getLore.get(9);
+        String fourthSpellRaw= getLore.get(i+9);
         if (fourthSpellRaw.contains("*")){
             fourthSpellRaw=fourthSpellRaw.toLowerCase().replaceAll("[^1234567890/*]", "");
             fourthSpellRaw=fourthSpellRaw.substring(1,fourthSpellRaw.indexOf("*")-1);

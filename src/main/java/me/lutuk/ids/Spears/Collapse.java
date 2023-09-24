@@ -22,7 +22,7 @@ public class Collapse {
     private static double currentthunderDefense;
     private static double currentearthDefense;
 
-    public static ItemStack Collapse(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Collapse(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -32,7 +32,7 @@ public class Collapse {
         if (getLore.isEmpty()) {
             return null;
         }
-        String manaSteal = getLore.get(4);
+        String manaSteal = getLore.get(i+4);
         manaSteal = manaSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         manaSteal = manaSteal.substring(1, manaSteal.lastIndexOf("/"));
         currentmanaSteal = Double.parseDouble(manaSteal);
@@ -41,7 +41,7 @@ public class Collapse {
         double manaStealWeight1 = CalcUtils.positveStats(manaStealList[1], manaStealList[0], currentmanaSteal, manaStealList[2]);
         double manaStealWeight2 = CalcUtils.positveStats(manaStealList[1], manaStealList[0], currentmanaSteal, manaStealList[3]);
 
-        String exploding = getLore.get(5);
+        String exploding = getLore.get(i+5);
         exploding = exploding.toLowerCase().replaceAll("[^1234567890%]", "");
         exploding = exploding.substring(1, exploding.lastIndexOf("%"));
         currentexploding = Double.parseDouble(exploding);
@@ -50,7 +50,7 @@ public class Collapse {
         double explodingWeight1 = CalcUtils.positveStats(explodingList[1], explodingList[0], currentexploding, explodingList[2]);
         double explodingWeight2 = CalcUtils.positveStats(explodingList[1], explodingList[0], currentexploding, explodingList[3]);
 
-        String mainDamage = getLore.get(6);
+        String mainDamage = getLore.get(i+6);
         mainDamage = mainDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         mainDamage = mainDamage.substring(1, mainDamage.lastIndexOf("%"));
         currentmainDamage = Double.parseDouble(mainDamage);
@@ -59,7 +59,7 @@ public class Collapse {
         double mainDamageWeight1 = CalcUtils.positveStats(mainDamageList[1], mainDamageList[0], currentmainDamage, mainDamageList[2]);
         double mainDamageWeight2 = CalcUtils.positveStats(mainDamageList[1], mainDamageList[0], currentmainDamage, mainDamageList[3]);
 
-        String fireDefense = getLore.get(7);
+        String fireDefense = getLore.get(i+7);
         fireDefense = fireDefense.toLowerCase().replaceAll("[^1234567890%]", "");
         fireDefense = fireDefense.substring(1, fireDefense.lastIndexOf("%"));
         currentfireDefense = Double.parseDouble(fireDefense);
@@ -68,7 +68,7 @@ public class Collapse {
         double fireDefenseWeight1 = CalcUtils.negativeStats(fireDefenseList[1], fireDefenseList[0], currentfireDefense, fireDefenseList[2]);
         double fireDefenseWeight2 = CalcUtils.negativeStats(fireDefenseList[1], fireDefenseList[0], currentfireDefense, fireDefenseList[3]);
 
-        String waterDefense = getLore.get(8);
+        String waterDefense = getLore.get(i+8);
         waterDefense = waterDefense.toLowerCase().replaceAll("[^1234567890%]", "");
         waterDefense = waterDefense.substring(1, waterDefense.lastIndexOf("%"));
         currentwaterDefense = Double.parseDouble(waterDefense);
@@ -77,7 +77,7 @@ public class Collapse {
         double waterDefenseWeight1 = CalcUtils.negativeStats(waterDefenseList[1], waterDefenseList[0], currentwaterDefense, waterDefenseList[2]);
         double waterDefenseWeight2 = CalcUtils.negativeStats(waterDefenseList[1], waterDefenseList[0], currentwaterDefense, waterDefenseList[3]);
 
-        String airDefense = getLore.get(9);
+        String airDefense = getLore.get(i+9);
         airDefense = airDefense.toLowerCase().replaceAll("[^1234567890%]", "");
         airDefense = airDefense.substring(1, airDefense.lastIndexOf("%"));
         currentairDefense = Double.parseDouble(airDefense);
@@ -86,7 +86,7 @@ public class Collapse {
         double airDefenseWeight1 = CalcUtils.negativeStats(airDefenseList[1], airDefenseList[0], currentairDefense, airDefenseList[2]);
         double airDefenseWeight2 = CalcUtils.negativeStats(airDefenseList[1],airDefenseList[0], currentairDefense, airDefenseList[3]);
 
-        String thunderDefense = getLore.get(10);
+        String thunderDefense = getLore.get(i+10);
         thunderDefense = thunderDefense.toLowerCase().replaceAll("[^1234567890%]", "");
         thunderDefense = thunderDefense.substring(1, thunderDefense.lastIndexOf("%"));
         currentthunderDefense = Double.parseDouble(thunderDefense);
@@ -95,7 +95,7 @@ public class Collapse {
         double thunderDefenseWeight1 = CalcUtils.negativeStats(thunderDefenseList[1], thunderDefenseList[0], currentthunderDefense, thunderDefenseList[2]);
         double thunderDefenseWeight2 = CalcUtils.negativeStats(thunderDefenseList[1], thunderDefenseList[0], currentthunderDefense, thunderDefenseList[3]);
 
-        String earthDefense = getLore.get(11);
+        String earthDefense = getLore.get(i+11);
         earthDefense = earthDefense.toLowerCase().replaceAll("[^1234567890%]", "");
         earthDefense = earthDefense.substring(1, earthDefense.lastIndexOf("%"));
         currentearthDefense = Double.parseDouble(earthDefense);

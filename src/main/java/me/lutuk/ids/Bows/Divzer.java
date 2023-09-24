@@ -19,7 +19,7 @@ public class Divzer {
     private static double currentwaterDamage;
     private static double currentrawSpell;
     private static double currentrawMelee;
-    public static ItemStack Divzer(ItemStack mainHandItem) throws IOException{
+    public static ItemStack Divzer(ItemStack mainHandItem,int i) throws IOException{
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -30,7 +30,7 @@ public class Divzer {
             return null;
         }
 
-        String lifeSteal= getLore.get(6);
+        String lifeSteal= getLore.get(i+6);
         lifeSteal= lifeSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         lifeSteal = lifeSteal.substring(1, lifeSteal.lastIndexOf("/"));
         currentlifeSteal = Double.parseDouble(lifeSteal);
@@ -39,7 +39,7 @@ public class Divzer {
         double lifeStealWeight = CalcUtils.positveStats(lifeStealList[1],lifeStealList[0],currentlifeSteal,lifeStealList[2]);
 
 
-        String manaSteal= getLore.get(7);
+        String manaSteal= getLore.get(i+7);
         manaSteal= manaSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         manaSteal = manaSteal.substring(1, manaSteal.lastIndexOf("/"));
         currentmanaSteal = Double.parseDouble(manaSteal);
@@ -47,21 +47,21 @@ public class Divzer {
         double[] manaStealList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Divzer").getAsJsonObject().get("manaSteal"), double[].class);
         double manaStealWeight = CalcUtils.positveStats(manaStealList[1],manaStealList[0],currentmanaSteal,manaStealList[2]);
 
-        String fireDamage= getLore.get(9);
+        String fireDamage= getLore.get(i+9);
         fireDamage= fireDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         fireDamage = fireDamage.substring(1, fireDamage.lastIndexOf("%"));
         currentfireDamage = Double.parseDouble(fireDamage);
 
         double[] fireDamageList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Divzer").getAsJsonObject().get("fireDamage"), double[].class);
         double fireDamageWeight = CalcUtils.negativeStats(fireDamageList[1],fireDamageList[0],currentfireDamage,fireDamageList[2]);
-        String waterDamage= getLore.get(10);
+        String waterDamage= getLore.get(i+10);
         waterDamage= waterDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         waterDamage = waterDamage.substring(1, waterDamage.lastIndexOf("%"));
         currentwaterDamage = Double.parseDouble(waterDamage);
 
         double[] waterDamageList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Divzer").getAsJsonObject().get("waterDamage"), double[].class);
         double waterDamageWeight = CalcUtils.negativeStats(waterDamageList[1],waterDamageList[0],currentwaterDamage,waterDamageList[2]);
-        String rawSpell= getLore.get(11);
+        String rawSpell= getLore.get(i+11);
         if (rawSpell.contains("*")){
             rawSpell=rawSpell.toLowerCase().replaceAll("[^1234567890/*]", "");
             rawSpell=rawSpell.substring(1,rawSpell.indexOf("*")-1);
@@ -73,7 +73,7 @@ public class Divzer {
 
         double[] rawSpellList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Divzer").getAsJsonObject().get("rawSpell"), double[].class);
         double rawSpellWeight = CalcUtils.positveStats(rawSpellList[1],rawSpellList[0],currentrawSpell,rawSpellList[2]);
-        String rawMelee= getLore.get(12);
+        String rawMelee= getLore.get(i+12);
         if (rawMelee.contains("*")){
             rawMelee=rawMelee.toLowerCase().replaceAll("[^1234567890/*]", "");
             rawMelee=rawMelee.substring(1,rawMelee.indexOf("*")-1);

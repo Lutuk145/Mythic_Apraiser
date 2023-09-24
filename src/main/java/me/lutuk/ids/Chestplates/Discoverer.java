@@ -15,7 +15,7 @@ import java.util.List;
 public class Discoverer {
     private static double currentlootBonus;
     private static double currentxpBonus;
-    public static ItemStack Discoverer(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Discoverer(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -25,14 +25,14 @@ public class Discoverer {
         if (getLore.isEmpty()) {
             return null;
         }
-        String lootBonus= getLore.get(3);
+        String lootBonus= getLore.get(i+3);
         lootBonus= lootBonus.toLowerCase().replaceAll("[^1234567890%]", "");
         lootBonus = lootBonus.substring(1, lootBonus.lastIndexOf("%"));
         currentlootBonus = Double.parseDouble(lootBonus);
 
         double[] lootBonusList = gson.fromJson(jsonObject.get("Chestplates").getAsJsonObject().get("Discoverer").getAsJsonObject().get("lootBonus"), double[].class);
         double lootBonusWeight = CalcUtils.positveStats(lootBonusList[1],lootBonusList[0],currentlootBonus,lootBonusList[2]);
-        String xpBonus= getLore.get(2);
+        String xpBonus= getLore.get(i+2);
         xpBonus= xpBonus.toLowerCase().replaceAll("[^1234567890%]", "");
         xpBonus = xpBonus.substring(1, xpBonus.lastIndexOf("%"));
         currentxpBonus = Double.parseDouble(xpBonus);

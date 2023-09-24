@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.lutuk.Mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [],
+  "client": [
+    "MainScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

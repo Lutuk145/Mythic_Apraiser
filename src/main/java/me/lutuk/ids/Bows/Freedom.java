@@ -18,7 +18,7 @@ public class Freedom {
     private static double currenthealth;
     private static double currentrawSpell;
     private static double currentrawMelee;
-    public static ItemStack Freedom(ItemStack mainHandItem)throws IOException {
+    public static ItemStack Freedom(ItemStack mainHandItem,int i)throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -29,7 +29,7 @@ public class Freedom {
             return null;
         }
 
-        String manaRegen= getLore.get(4);
+        String manaRegen= getLore.get(i+4);
         manaRegen= manaRegen.toLowerCase().replaceAll("[^1234567890/]", "");
         manaRegen = manaRegen.substring(1, manaRegen.lastIndexOf("/"));
         currentmanaRegen = Double.parseDouble(manaRegen);
@@ -37,14 +37,14 @@ public class Freedom {
         double[] manaRegenList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Freedom").getAsJsonObject().get("manaRegen"), double[].class);
         double manaRegenWeight = CalcUtils.positveStats(manaRegenList[1],manaRegenList[0],currentmanaRegen,manaRegenList[2]);
 
-        String walkSpeed= getLore.get(5);
+        String walkSpeed= getLore.get(i+5);
         walkSpeed= walkSpeed.toLowerCase().replaceAll("[^1234567890%]", "");
         walkSpeed = walkSpeed.substring(1, walkSpeed.lastIndexOf("%"));
         currentwalkSpeed = Double.parseDouble(walkSpeed);
 
         double[] walkSpeedList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Freedom").getAsJsonObject().get("walkSpeed"), double[].class);
         double walkSpeedWeight = CalcUtils.positveStats(walkSpeedList[1],walkSpeedList[0],currentwalkSpeed,walkSpeedList[2]);
-        String health= getLore.get(6);
+        String health= getLore.get(i+6);
         if (health.contains("*")){
             health=health.toLowerCase().replaceAll("[^1234567890/*]", "");
             health=health.substring(1,health.indexOf("*")-1);
@@ -56,7 +56,7 @@ public class Freedom {
 
         double[] healthList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Freedom").getAsJsonObject().get("health"), double[].class);
         double healthWeight = CalcUtils.positveStats(healthList[1],healthList[0],currenthealth,healthList[2]);
-        String rawSpell= getLore.get(7);
+        String rawSpell= getLore.get(i+7);
         if (rawSpell.contains("*")){
             rawSpell=rawSpell.toLowerCase().replaceAll("[^1234567890/*]", "");
             rawSpell=rawSpell.substring(1,rawSpell.indexOf("*")-1);
@@ -68,7 +68,7 @@ public class Freedom {
 
         double[] rawSpellList = gson.fromJson(jsonObject.get("Bows").getAsJsonObject().get("Freedom").getAsJsonObject().get("rawSpell"), double[].class);
         double rawSpellWeight = CalcUtils.positveStats(rawSpellList[1],rawSpellList[0],currentrawSpell,rawSpellList[2]);
-        String rawMelee= getLore.get(8);
+        String rawMelee= getLore.get(i+8);
         if (rawMelee.contains("*")){
             rawMelee=rawMelee.toLowerCase().replaceAll("[^1234567890/*]", "");
             rawMelee=rawMelee.substring(1,rawMelee.indexOf("*")-1);

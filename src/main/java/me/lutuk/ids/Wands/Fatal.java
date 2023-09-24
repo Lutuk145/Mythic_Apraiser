@@ -17,7 +17,7 @@ public class Fatal {
     private static double currentspellDamage;
     private static double currentfirstSpellPercent;
     private static double currentsecondSpellPercent;
-    public static ItemStack Fatal(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Fatal(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -30,28 +30,28 @@ public class Fatal {
 
 
 
-        String walkSpeed= getLore.get(5);
+        String walkSpeed= getLore.get(i+5);
         walkSpeed= walkSpeed.toLowerCase().replaceAll("[^1234567890%]", "");
         walkSpeed = walkSpeed.substring(1, walkSpeed.lastIndexOf("%"));
         currentwalkSpeed = Double.parseDouble(walkSpeed);
 
         double[] walkSpeedList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Fatal").getAsJsonObject().get("walkSpeed"), double[].class);
         double walkSpeedWeight = CalcUtils.positveStats(walkSpeedList[1],walkSpeedList[0],currentwalkSpeed,walkSpeedList[2]);
-        String spellDamage= getLore.get(6);
+        String spellDamage= getLore.get(i+6);
         spellDamage= spellDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         spellDamage = spellDamage.substring(1, spellDamage.lastIndexOf("%"));
         currentspellDamage = Double.parseDouble(spellDamage);
 
         double[] spellDamageList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Fatal").getAsJsonObject().get("spellDamage"), double[].class);
         double spellDamageWeight = CalcUtils.positveStats(spellDamageList[1],spellDamageList[0],currentspellDamage,spellDamageList[2]);
-        String firstSpellPercent= getLore.get(7);
+        String firstSpellPercent= getLore.get(i+7);
         firstSpellPercent= firstSpellPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         firstSpellPercent = firstSpellPercent.substring(1, firstSpellPercent.lastIndexOf("%"));
         currentfirstSpellPercent = Double.parseDouble(firstSpellPercent);
 
         double[] firstSpellPercentList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Fatal").getAsJsonObject().get("firstSpellPercent"), double[].class);
         double firstSpellPercentWeight = CalcUtils.negativeStats(firstSpellPercentList[1],firstSpellPercentList[0],currentfirstSpellPercent,firstSpellPercentList[2]);
-        String secondSpellPercent= getLore.get(8);
+        String secondSpellPercent= getLore.get(i+8);
         secondSpellPercent= secondSpellPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         secondSpellPercent = secondSpellPercent.substring(1, secondSpellPercent.lastIndexOf("%"));
         currentsecondSpellPercent = Double.parseDouble(secondSpellPercent);

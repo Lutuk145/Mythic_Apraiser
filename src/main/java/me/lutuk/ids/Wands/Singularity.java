@@ -20,7 +20,7 @@ public class Singularity {
     private static double currentmeleePercent;
     private static double currentmeleeRaw;
 
-    public static ItemStack Singularity(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Singularity(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
         String output = String.valueOf(mainHandItem.getNbt());
@@ -30,7 +30,7 @@ public class Singularity {
         if (getLore.isEmpty()) {
             return null;
         }
-        String walkSpeed = getLore.get(4);
+        String walkSpeed = getLore.get(i+4);
         walkSpeed = walkSpeed.toLowerCase().replaceAll("[^1234567890%]", "");
         walkSpeed = walkSpeed.substring(1, walkSpeed.lastIndexOf("%"));
         currentwalkSpeed = Double.parseDouble(walkSpeed);
@@ -38,7 +38,7 @@ public class Singularity {
         double[] walkSpeedList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Singularity").getAsJsonObject().get("walkSpeed"), double[].class);
         double walkSpeedWeight1 = CalcUtils.negativeStats(walkSpeedList[1], walkSpeedList[0], currentwalkSpeed, walkSpeedList[2]);
         double walkSpeedWeight2 = CalcUtils.negativeStats(walkSpeedList[1], walkSpeedList[0], currentwalkSpeed, walkSpeedList[3]);
-        String rawHpr = getLore.get(5);
+        String rawHpr = getLore.get(i+5);
         if (rawHpr.contains("*")) {
             rawHpr = rawHpr.toLowerCase().replaceAll("[^1234567890/*]", "");
             rawHpr = rawHpr.substring(1, rawHpr.indexOf("*") - 1);
@@ -51,7 +51,7 @@ public class Singularity {
         double[] rawHprList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Singularity").getAsJsonObject().get("rawHpr"), double[].class);
         double rawHprWeight1 = CalcUtils.positveStats(rawHprList[1], rawHprList[0], currentrawHpr, rawHprList[2]);
         double rawHprWeight2 = CalcUtils.positveStats(rawHprList[1], rawHprList[0], currentrawHpr, rawHprList[3]);
-        String spellDamage = getLore.get(6);
+        String spellDamage = getLore.get(i+6);
         spellDamage = spellDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         spellDamage = spellDamage.substring(1, spellDamage.lastIndexOf("%"));
         currentspellDamage = Double.parseDouble(spellDamage);
@@ -59,7 +59,7 @@ public class Singularity {
         double[] spellDamageList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Singularity").getAsJsonObject().get("spellDamage"), double[].class);
         double spellDamageWeight1 = CalcUtils.positveStats(spellDamageList[1], spellDamageList[0], currentspellDamage, spellDamageList[2]);
         double spellDamageWeight2 = CalcUtils.positveStats(spellDamageList[1], spellDamageList[0], currentspellDamage, spellDamageList[3]);
-        String spelLRaw = getLore.get(7);
+        String spelLRaw = getLore.get(i+7);
         if (spelLRaw.contains("*")) {
             spelLRaw = spelLRaw.toLowerCase().replaceAll("[^1234567890/*]", "");
             spelLRaw = spelLRaw.substring(1, spelLRaw.indexOf("*") - 1);
@@ -72,7 +72,7 @@ public class Singularity {
         double[] spelLRawList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Singularity").getAsJsonObject().get("spellRaw"), double[].class);
         double spelLRawWeight1 = CalcUtils.positveStats(spelLRawList[1], spelLRawList[0], currentspelLRaw, spelLRawList[2]);
         double spelLRawWeight2 = CalcUtils.positveStats(spelLRawList[1], spelLRawList[0], currentspelLRaw, spelLRawList[3]);
-        String meleePercent = getLore.get(8);
+        String meleePercent = getLore.get(i+8);
         meleePercent = meleePercent.toLowerCase().replaceAll("[^1234567890%]", "");
         meleePercent = meleePercent.substring(1, meleePercent.lastIndexOf("%"));
         currentmeleePercent = Double.parseDouble(meleePercent);
@@ -80,7 +80,7 @@ public class Singularity {
         double[] meleePercentList = gson.fromJson(jsonObject.get("Wands").getAsJsonObject().get("Singularity").getAsJsonObject().get("meleePercent"), double[].class);
         double meleePercentWeight1 = CalcUtils.positveStats(meleePercentList[1], meleePercentList[0], currentmeleePercent, meleePercentList[2]);
         double meleePercentWeight2 = CalcUtils.positveStats(meleePercentList[1], meleePercentList[0], currentmeleePercent, meleePercentList[3]);
-        String meleeRaw = getLore.get(9);
+        String meleeRaw = getLore.get(i+9);
         if (meleeRaw.contains("*")) {
             meleeRaw = meleeRaw.toLowerCase().replaceAll("[^1234567890/*]", "");
             meleeRaw = meleeRaw.substring(1, meleeRaw.indexOf("*") - 1);

@@ -21,7 +21,7 @@ public class Apocalypse {
     private static double currentwaterDefense;
     private static double currentlifeSteal;
 
-    public static ItemStack Apocalypse(ItemStack mainHandItem) throws IOException {
+    public static ItemStack Apocalypse(ItemStack mainHandItem,int i) throws IOException {
         JsonObject jsonObject = JsonUtils.getFromJsonFile();
         Gson gson = new Gson();
 
@@ -32,7 +32,7 @@ public class Apocalypse {
         if (getLore.isEmpty()) {
             return null;
         }
-        String healthRegenPercent = getLore.get(5);
+        String healthRegenPercent = getLore.get(i+5);
         healthRegenPercent = healthRegenPercent.toLowerCase().replaceAll("[^1234567890%]", "");
         healthRegenPercent = healthRegenPercent.substring(1, healthRegenPercent.lastIndexOf("%"));
         currenthealthRegenPercent = Double.parseDouble(healthRegenPercent);
@@ -40,7 +40,7 @@ public class Apocalypse {
         double[] healthRegenPercentList = gson.fromJson(jsonObject.get("Spears").getAsJsonObject().get("Apocalypse").getAsJsonObject().get("healthRegenPercent"), double[].class);
         double healthRegenPercentWeight = CalcUtils.negativeStats(healthRegenPercentList[1], healthRegenPercentList[0], currenthealthRegenPercent, healthRegenPercentList[2]);
 
-        String exploding = getLore.get(7);
+        String exploding = getLore.get(i+7);
         exploding = exploding.toLowerCase().replaceAll("[^1234567890%]", "");
         exploding = exploding.substring(1, exploding.lastIndexOf("%"));
         currentexploding = Double.parseDouble(exploding);
@@ -48,28 +48,28 @@ public class Apocalypse {
         double[] explodingList = gson.fromJson(jsonObject.get("Spears").getAsJsonObject().get("Apocalypse").getAsJsonObject().get("exploding"), double[].class);
         double explodingWeight = CalcUtils.positveStats(explodingList[1], explodingList[0], currentexploding, explodingList[2]);
 
-        String waterDamage = getLore.get(9);
+        String waterDamage = getLore.get(i+9);
         waterDamage = waterDamage.toLowerCase().replaceAll("[^1234567890%]", "");
         waterDamage = waterDamage.substring(1, waterDamage.lastIndexOf("%"));
         currentwaterDamage = Double.parseDouble(waterDamage);
 
         double[] waterDamageList = gson.fromJson(jsonObject.get("Spears").getAsJsonObject().get("Apocalypse").getAsJsonObject().get("waterDamage"), double[].class);
         double waterDamageWeight = CalcUtils.negativeStats(waterDamageList[1], waterDamageList[0], currentwaterDamage, waterDamageList[2]);
-        String soulPointregen = getLore.get(8);
+        String soulPointregen = getLore.get(i+8);
         soulPointregen = soulPointregen.toLowerCase().replaceAll("[^1234567890%]", "");
         soulPointregen = soulPointregen.substring(1, soulPointregen.lastIndexOf("%"));
         currentsoulPointregen = Double.parseDouble(soulPointregen);
 
         double[] soulPointregenList = gson.fromJson(jsonObject.get("Spears").getAsJsonObject().get("Apocalypse").getAsJsonObject().get("soulPointregen"), double[].class);
         double soulPointregenWeight = CalcUtils.negativeStats(soulPointregenList[1], soulPointregenList[0], currentsoulPointregen, soulPointregenList[2]);
-        String fireDefense = getLore.get(10);
+        String fireDefense = getLore.get(i+10);
         fireDefense = fireDefense.toLowerCase().replaceAll("[^1234567890%]", "");
         fireDefense = fireDefense.substring(1, fireDefense.lastIndexOf("%"));
         currentfireDefense = Double.parseDouble(fireDefense);
 
         double[] fireDefenseList = gson.fromJson(jsonObject.get("Spears").getAsJsonObject().get("Apocalypse").getAsJsonObject().get("fireDefense"), double[].class);
         double fireDefenseWeight = CalcUtils.positveStats(fireDefenseList[1], fireDefenseList[0], currentfireDefense, fireDefenseList[2]);
-        String waterDefense = getLore.get(11);
+        String waterDefense = getLore.get(i+11);
         waterDefense = waterDefense.toLowerCase().replaceAll("[^1234567890%]", "");
         waterDefense = waterDefense.substring(1, waterDefense.lastIndexOf("%"));
         currentwaterDefense = Double.parseDouble(waterDefense);
@@ -77,7 +77,7 @@ public class Apocalypse {
         double[] waterDefenseList = gson.fromJson(jsonObject.get("Spears").getAsJsonObject().get("Apocalypse").getAsJsonObject().get("waterDefense"), double[].class);
         double waterDefenseWeight = CalcUtils.negativeStats(waterDefenseList[1], waterDefenseList[0], currentwaterDefense, waterDefenseList[2]);
 
-        String lifeSteal = getLore.get(6);
+        String lifeSteal = getLore.get(i+6);
         lifeSteal = lifeSteal.toLowerCase().replaceAll("[^1234567890/]", "");
         lifeSteal = lifeSteal.substring(1, lifeSteal.lastIndexOf("/"));
         currentlifeSteal = Double.parseDouble(lifeSteal);
