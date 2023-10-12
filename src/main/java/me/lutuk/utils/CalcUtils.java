@@ -15,7 +15,5 @@ public class CalcUtils {
         System.out.println(negativeStats(351,189,276,15));
         System.out.println(positveStats(371,89,114,32.5));
         System.out.println(positveStats(39,9,39,37.5));
-
-
     }
 }

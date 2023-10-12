@@ -17,6 +17,9 @@ import java.io.IOException;
 import static me.lutuk.itemstacks.getItemstacks.tick;
 
 public class ExampleMod implements ModInitializer {
+    /**
+     * TODO
+     */
     public static final Logger LOGGER = LoggerFactory.getLogger("mythicapraiser");
     // This logger is used to write text to the console and the log file.
     // It is considered best practice to use your mod id as the logger's name.
@@ -35,9 +38,6 @@ public class ExampleMod implements ModInitializer {
         debugModeInventory = false;
         debugModeContainer = false;
         FileUtils.copyDataFiles();
-        // This code runs as soon as Minecraft is in a mod-load-ready state.
-        // However, some things (like resources) may still be uninitialized.
-        // Proceed with mild caution.
         getItemstack = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.examplemod.spook", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_KP_8, "category.examplemod.bindings"
 
         ));
@@ -47,7 +47,10 @@ public class ExampleMod implements ModInitializer {
 
             }
         });
-
+        /**TODO
+         * fix bug where the mod does nto work sometimes
+         * make debug mode more clean
+         */
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             try {
                 tick();

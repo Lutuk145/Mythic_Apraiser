@@ -25,6 +25,14 @@ public class Config extends Screen {
         super.render(matrices, mouseX, mouseY, delta);
     }
 
+/**TODO
+ * add input panels for changing color milestones
+ * add some mroe color palets
+ * change the name of the item completly if its perfect
+ * add config for all these things
+ * make the button for config smaller and in the corner(aprox 100:20)
+ * revamp the gui to make it look more clean
+ */
     @Override
     protected void init() {
         super.init();
