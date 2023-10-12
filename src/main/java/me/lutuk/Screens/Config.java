@@ -19,19 +19,11 @@ public class Config extends Screen {
         super(Text.of("Test"));
     }
 
-    @Override
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        this.renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
-    }
 
-/**TODO
- * add input panels for changing color milestones
- * add some mroe color palets
- * change the name of the item completly if its perfect
- * add config for all these things
- * make the button for config smaller and in the corner(aprox 100:20)
- * revamp the gui to make it look more clean
+/**TODO add input panels for changing color milestones
+ * TODO change the name of the item completly if its perfect
+ * TODO add config for all these things
+ * TODO revamp the gui to make it look more clean
  */
     @Override
     protected void init() {
@@ -41,6 +33,7 @@ public class Config extends Screen {
                     if (toggle){
                         toggleButton.setMessage(Text.literal("Toggle: §cfalse"));
                         toggle = false;
+                        assert MinecraftClient.getInstance().player != null;
                         MinecraftClient.getInstance().player.getInventory().updateItems();
                         MinecraftClient.getInstance().player.currentScreenHandler.updateToClient();
                     }
@@ -50,29 +43,14 @@ public class Config extends Screen {
                         MinecraftClient.getInstance().player.getInventory().updateItems();
                         MinecraftClient.getInstance().player.currentScreenHandler.updateToClient();
                     }
-                }).dimensions(width / 2 -100, this.height/2+10, 200, 20).build());
-        addDrawableChild(debugModeButton = ButtonWidget.builder(Text.literal(""), b -> {
-            if (debugMode){
-                debugModeButton.setMessage(Text.literal("Debug Mode: §cfalse"));
-                debugMode = false;
-            }
-            else {
-                debugModeButton.setMessage(Text.literal("Debug Mode: §atrueÀ"));
-                debugMode = true;
-            }
-        }).dimensions(width / 2 -100, this.height/2+50, 200, 20).build());
+                }).dimensions(width / 2 , this.height/2+10, 100, 20).build());
+
 
         if (toggle){
             toggleButton.setMessage(Text.literal("Toggle: §atrueÀ"));
         }
         else {
             toggleButton.setMessage(Text.literal("Toggle: §cfalse"));
-        }
-        if (debugMode){
-            debugModeButton.setMessage(Text.literal("Debug Mode: §atrueÀ"));
-        }
-        else {
-            debugModeButton.setMessage(Text.literal("Debug Mode: §cfalse"));
         }
 
     }

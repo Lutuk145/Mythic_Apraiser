@@ -19,7 +19,8 @@ public abstract class MainScreenMixin extends Screen {
     @Inject(method = "initWidgets", at = @At("RETURN"))
     private void initMixin(CallbackInfo ci) {
         this.addDrawableChild(ButtonWidget.builder(Text.translatable("Mythic appraiser"), (button) -> {
+            assert this.client != null;
             this.client.setScreen(new Config());
-        }).dimensions(this.width / 2 - 100, MinecraftClient.getInstance().getWindow().getScaledHeight() / 10 * 2, 200, 20).build());
+        }).dimensions(this.width-100, this.height-20, 100, 20).build());
     }
 }

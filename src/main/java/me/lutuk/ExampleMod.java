@@ -26,7 +26,6 @@ public class ExampleMod implements ModInitializer {
     // That way, it's clear which mod wrote info, warnings, and errors.
     public static KeyBinding getItemstack;
     public static boolean toggle;
-    public static boolean debugMode;
 
     public static boolean debugModeInventory;
     public static boolean debugModeContainer;
@@ -34,7 +33,6 @@ public class ExampleMod implements ModInitializer {
     @Override
     public void onInitialize() {
         toggle = true;
-        debugMode = false;
         debugModeInventory = false;
         debugModeContainer = false;
         FileUtils.copyDataFiles();
@@ -47,9 +45,8 @@ public class ExampleMod implements ModInitializer {
 
             }
         });
-        /**TODO
-         * fix bug where the mod does nto work sometimes
-         * make debug mode more clean
+        /**TODO fix bug where the mod does nto work sometimes
+         * TODO make debug mode more clean
          */
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             try {
